@@ -17,6 +17,40 @@ const { title } = Astro.props as Props
   </head>
   <body>
     <slot />
+    <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', () => {
+      const header = document.getElementById('main-header');
+      if (!header) return;
+
+      let lastScroll = window.scrollY;
+
+      window.addEventListener('scroll', () => {
+        const currentScroll = window.scrollY;
+
+        if (currentScroll === 0) {
+          header.style.transform = 'translateY(0)';
+        } else if (currentScroll < lastScroll) {
+          if (currentScroll < 10) {
+            header.style.transform = 'translateY(-5px)';
+          } else {
+            header.style.transform = 'translateY(-5px)';
+          }
+        } else if (currentScroll > lastScroll) {
+          header.style.transform = 'translateY(-80px)';
+        }
+
+        if (currentScroll > 0) {
+          header.classList.add('shadow-xl/20', 'shadow-secondary', 'sticky', 'top-0', 'z-10');
+        } else {
+          header.classList.remove('shadow-xl/20', 'shadow-secondary');
+        }
+
+        lastScroll = currentScroll;
+      });
+    });
+    </script>
+
+
   </body>
 </html>
 

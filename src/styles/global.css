@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+
+@theme {
+  --color-secondary: #94CFFB;
+  --color-background: #101325;
+
+  --font-main: 'Onest Variable', sans-serif;
+}
+
+
+@layer base {
+  html {
+    @apply bg-background font-main;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+  }
+}
+
+@layer utilities {}
