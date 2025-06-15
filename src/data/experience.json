@@ -1,0 +1,46 @@
+[
+  {
+    "company": "CEICE-CV",
+    "role": "DESARROLADOR FULL-STACK (PRACTICAS)",
+    "period": "ENE 2023 - MAY 2023",
+    "description": [
+      "Desarrollo de una landing page de cursos con PHP y Laravel, integrando una base de datos relacional.",
+      "Mantenimiento y optimización de la base de datos existente mediante técnicas de normalización.",
+      "Experience in both front-end and back-end development.",
+      "Reactivación de redes sociales y diseño de contenido multimedia para campañas publicitarias."
+    ]
+  },
+  {
+    "company": "CEICE-CV",
+    "role": "DESARROLADOR WEB FULL-STACK (PRACTICAS)",
+    "period": "ENE 2023 - MAY 2023",
+    "description": [
+      "Desarrollo de una landing page de cursos con PHP y Laravel, integrando una base de datos relacional.",
+      "Mantenimiento y optimización de la base de datos existente mediante técnicas de normalización.",
+      "Experience in both front-end and back-end development.",
+      "Reactivación de redes sociales y diseño de contenido multimedia para campañas publicitarias."
+    ]
+  },
+  {
+    "company": "CEICE-CV",
+    "role": "DESARROLADOR FULL-STACK",
+    "period": "Ene - May 2023",
+    "description": [
+      "Desarrollo de una landing page de cursos con PHP y Laravel, integrando una base de datos relacional.",
+      "Mantenimiento y optimización de la base de datos existente mediante técnicas de normalización.",
+      "Experience in both front-end and back-end development.",
+      "Reactivación de redes sociales y diseño de contenido multimedia para campañas publicitarias."
+    ]
+  },
+  {
+    "company": "CEICE-CV",
+    "role": "DESARROLADOR WEB FULL-STACK (PRACTICAS)",
+    "period": "ENE 2023 - MAY 2023",
+    "description": [
+      "Desarrollo de una landing page de cursos con PHP y Laravel, integrando una base de datos relacional.",
+      "Mantenimiento y optimización de la base de datos existente mediante técnicas de normalización.",
+      "Experience in both front-end and back-end development.",
+      "Reactivación de redes sociales y diseño de contenido multimedia para campañas publicitarias."
+    ]
+  }
+]

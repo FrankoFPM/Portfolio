@@ -40,9 +40,9 @@ const { title } = Astro.props as Props
         }
 
         if (currentScroll > 0) {
-          header.classList.add('shadow-xl/20', 'shadow-secondary', 'sticky', 'top-0', 'z-10');
+          header.classList.add('shadow-xl/20', 'shadow-black', 'sticky', 'top-0', 'z-10');
         } else {
-          header.classList.remove('shadow-xl/20', 'shadow-secondary');
+          header.classList.remove('shadow-xl/20', 'shadow-black');
         }
 
         lastScroll = currentScroll;
