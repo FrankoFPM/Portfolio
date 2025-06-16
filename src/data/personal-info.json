@@ -1,0 +1,11 @@
+{
+  "personalInfo": {
+    "name": "Franco Perez",
+    "title": "I'm a Full Stack Developer",
+    "subtitle": "I am a passionate Full Stack Developer with a strong focus on creating dynamic and responsive web applications. I have experience in both front-end and back-end development, and I am always eager to learn new technologies and improve my skills."
+  },
+  "aboutMe": [
+    "¡Hola! Soy Franco, y mi curiosidad por la tecnología comenzó desde joven. Un día, mientras exploraba páginas web y juegos online, noté que podía modificar algunas cosas desde el modo desarrollador del navegador. Jugando con valores, inputs y estilos, descubrí cómo cambiar lo que se veía en pantalla —y aunque todo era solo visual, me intrigó tanto que quise entender cómo funcionaba realmente.",
+    "Ahí empezó todo. Desde entonces he seguido aprendiendo por mi cuenta, hasta convertir esa curiosidad en una formación técnica en informática, que ahora complemento con la carrera de Ingeniería de Sistemas e Informática. Me gusta crear soluciones web, automatizar procesos y resolver problemas con enfoque técnico y creativo."
+  ]
+}
