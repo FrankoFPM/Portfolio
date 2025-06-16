@@ -9,10 +9,11 @@ export interface ExperienceItem {
 const { experience } = Astro.props
 ---
 
-<section id="experience" class="min-h-[calc(100vh-120px)]">
+<section id="experience" class="min-h-[calc(50vh-120px)] my-5">
   <div>
-    <h2 class="text-3xl font-bold text-white/90">
-      <span class="text-secondary mr-2">02.</span> Experience
+    <h2 id="xp" class="text-3xl font-bold text-white/90 flex items-center my-10">
+      <span class="text-secondary mr-2">01.</span> Experience
+      <span class="flex-1 h-px bg-white/20 ml-4"></span>
     </h2>
     <div>
       {experience.map((exp: ExperienceItem, index: number) => (
@@ -22,24 +23,25 @@ const { experience } = Astro.props
             before:top-0 before:-bottom-10
             first:before:top-10
             last:before:bottom-[calc(100%-2.5rem)]
+            experience-item
             ${index !== experience.length - 1 ? 'mb-0' : ''}
           `}
           style={index !== experience.length - 1 ? 'margin-bottom: 2.5rem;' : ''}
         >
           {/* Punto */}
-          <span class="absolute top-8 w-4 h-4 bg-secondary block rounded-full z-10"></span>
+          <span class="absolute top-8 w-4 h-4 bg-secondary block rounded-full z-10 dot"></span>
 
           {/* Contenido */}
-          <div class="ml-10 grid grid-cols-1 md:grid-cols-5 gap-4">
+          <div class="ml-10 grid grid-cols-1 md:grid-cols-5 gap-4 w-full">
             <div class="mt-4 flex flex-col gap-2 col-span-2">
-              <h2 class="text-secondary font-semibold">{exp.role}</h2>
-              <h3 class="text-white/90 font-semibold">{exp.company}</h3>
-              <p class="text-white/80 text-pretty capitalize text-sm">{exp.period}</p>
+              <h2 class="text-secondary font-semibold role">{exp.role}</h2>
+              <h3 class="text-white/90 font-semibold company">{exp.company}</h3>
+              <p class="text-white/80 text-pretty capitalize text-sm period">{exp.period}</p>
             </div>
             <div class="col-span-3">
               <ul class="pl-2 mt-2">
                 {exp.description.map((desc: string) => (
-                  <li class="flex before:content-['▹'] before:text-secondary before:text-2xl before:mr-4 text-base text-white/70 text-pretty mt-4">
+                  <li class="description flex before:content-['▹'] before:text-secondary before:text-2xl before:mr-4 text-base text-white/70 text-pretty mt-4">
                     {desc}
                   </li>
                 ))}
@@ -50,4 +52,68 @@ const { experience } = Astro.props
       ))}
     </div>
   </div>
+  <script>
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+  import { SplitText } from 'gsap/SplitText';
+
+  gsap.registerPlugin(ScrollTrigger,SplitText);
+
+  gsap.from('#xp', {
+    scrollTrigger: {
+      trigger: '#xp',
+      start: 'top 100%',
+    },
+    opacity: 0,
+    y: 50,
+    duration: 0.7,
+  });
+
+  const content = document.querySelectorAll('.experience-item');
+  content.forEach((item) => {
+    const dot = item.querySelector('.dot');
+    const role = item.querySelector('.role');
+    const company = item.querySelector('.company');
+    const period = item.querySelector('.period');
+    const description = item.querySelectorAll('.description');
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: item,
+        start: 'top 100%',
+      },
+    });
+    tl.from(item, {
+      opacity: 0,
+      y: 50,
+      duration: 0.1,
+    })
+      .from(dot, {
+        scale: 0,
+        duration: 0.5,
+      })
+      .from(role, {
+        y: 50,
+        opacity: 0,
+        duration: 0.5,
+      })
+      .from(company, {
+        y: 50,
+        opacity: 0,
+        duration: 0.5,
+      }, '<')
+      .from(period, {
+        y: 50,
+        opacity: 0,
+        duration: 0.5,
+      }, '<')
+      .from(description, {
+        y: 50,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.2,
+      }, '<');
+  });
+
+  </script>
 </section>

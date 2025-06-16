@@ -1,0 +1,214 @@
+---
+import ReactIcon from './icons/ReactIcon.astro'
+import TailwindIcon from './icons/TailwindIcon.astro'
+import PixiJsIcon from './icons/PixiJsIcon.astro'
+import Githubicon from './icons/Githubicon.astro'
+import LinkButton from './LinkButton.astro'
+import ViteIcon from './icons/ViteIcon.astro'
+import LaravelIcon from './icons/LaravelIcon.astro'
+import MysqlIcon from './icons/MysqlIcon.astro'
+import JavaIcon from './icons/JavaIcon.astro'
+
+const TAGS = {
+  REACT: {
+    name: 'React',
+    class: 'bg-black text-white',
+    icon: ReactIcon,
+  },
+  TAILWIND: {
+    name: 'Tailwind CSS',
+    class: 'bg-[#003159] text-white',
+    icon: TailwindIcon,
+  },
+  PIXIJS: {
+    name: 'Pixijs',
+    class: 'bg-[#E72264] text-white',
+    icon: PixiJsIcon,
+  },
+  VITE: {
+    name: 'Vite',
+    class: 'bg-[#646CFF] text-white',
+    icon: ViteIcon, // Placeholder, replace with actual Vite icon
+  },
+  LARAVEL: {
+    name: 'Laravel',
+    class: 'bg-[#FFFF] text-black',
+    icon: LaravelIcon, // Placeholder, replace with actual Laravel icon
+  },
+  MYSQL: {
+    name: 'MySQL',
+    class: 'bg-[#6cb0bf] text-white',
+    icon: MysqlIcon, // Placeholder, replace with actual MySQL icon
+  },
+  JAVA: {
+    name: 'Java',
+    class: 'bg-[#D8F8FF] text-black',
+    icon: JavaIcon,
+  },
+}
+
+const PROJECTS = [
+  {
+    title: 'Landing Page de Cursos - CEICE-CV',
+    description:
+      'Sitio web informativo para promocionar cursos educativos, con diseño adaptable, integración de base de datos y enfoque en campañas digitales.',
+    link: 'https://ceice-cv.edu.pe/',
+    github: '',
+    image: 'img/projects/ceice.webp',
+    tags: [TAGS.TAILWIND, TAGS.LARAVEL, TAGS.MYSQL],
+  },
+  {
+    title: 'Spine Viewer',
+    description:
+      'Aplicación web para visualizar animaciones 2D creadas con Spine. Soporta archivos .skel, control de animaciones y personalización del visor.',
+    link: 'https://frankofpm.github.io/Spine-Viewer-Web/',
+    image: 'img/projects/spine.webp',
+    github: 'https://github.com/FrankoFPM/Spine-Viewer-Web',
+    tags: [TAGS.REACT, TAGS.TAILWIND, TAGS.PIXIJS, TAGS.VITE],
+  },
+  {
+    title: 'Sistema de registro de incidencias',
+    description:
+      'Aplicación de escritorio para registrar y gestionar incidencias, con archivos binarios aplicando estructuras de datos y algoritmos eficientes.',
+    image: 'img/projects/alg.webp',
+    github: 'https://github.com/FrankoFPM/Proyecto_Al_Est_Datos',
+    tags: [TAGS.JAVA],
+  },
+  {
+    title: 'Sistema de administración de alquileres',
+    description:
+      'Aplicación de escritorio para gestionar alquileres de habitaciones, con interfaz gráfica y almacenamiento en mySQL.',
+    image: 'img/projects/admin2.webp',
+    github: 'https://github.com/FrankoFPM/administracionV2',
+    tags: [TAGS.LARAVEL, TAGS.MYSQL, TAGS.TAILWIND],
+
+  }
+]
+---
+<section id="projects" class={`my-5 ${PROJECTS.length === 0 ? 'flex items-center justify-center' : ''}`}>
+  <div>
+  <h2 id="pj" class="text-3xl font-bold text-white/90 flex items-center my-10">
+    <span class="text-secondary mr-2">02.</span> Projects
+    <span class="flex-1 h-px bg-white/20 ml-4"></span>
+  </h2>
+  <div class="flex flex-col gap-y-16">
+    {
+      PROJECTS.map(({ image, title, description, tags, link, github }) => (
+        <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0 box-container">
+          <div class="w-full md:w-1/2">
+            <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+              <img
+                alt={title}
+                class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+                src={image}
+              />
+            </div>
+          </div>
+
+          <div class="w-full md:w-1/2 md:max-w-lg">
+            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 title">
+              {title}
+            </h3>
+            <div class="flex flex-wrap mt-2">
+              <ul class="flex flex-row mb-2 gap-x-2">
+                {tags.map((tagKey) => {
+                  return (
+                    <li class="chips">
+                      <span class={`flex gap-x-2 rounded-full text-xs ${tagKey.class} py-1 px-2`}>
+                        <tagKey.icon class="size-4" />
+                        {tagKey.name}
+                      </span>
+                    </li>
+                  )
+                })}
+              </ul>
+              <div class="mt-2 text-gray-700 dark:text-gray-400 description">{description}</div>
+              <footer class="flex items-end justify-start mt-4 gap-x-4">
+                {github && (
+                  <LinkButton href={github} extraClasses="buttons">
+                    <Githubicon class="size-6" />
+                  Code
+                  </LinkButton>
+                )}
+                {link && (
+                  <LinkButton href={link} extraClasses="buttons">
+                  Preview
+                  </LinkButton>
+                )}
+              </footer>
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+  <script>
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+  import { SplitText } from 'gsap/SplitText';
+
+  gsap.registerPlugin(ScrollTrigger,SplitText);
+
+  gsap.from('#pj', {
+    scrollTrigger: {
+      trigger: '#pj',
+      start: 'top 100%',
+    },
+    opacity: 0,
+    y: 50,
+    duration: 0.7,
+  });
+
+  const boxes = document.querySelectorAll('.box-container')
+  boxes.forEach((box) => {
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: box,
+        start: 'top 90%',
+      },
+    })
+    const title = box.querySelector('.title');
+    const chips = box.querySelectorAll('.chips');
+    const buttons = box.querySelectorAll('.buttons');
+    const description = box.querySelector('.description');
+    const splitDescription = SplitText.create(description, { type: 'lines' });
+
+
+    tl.from(box, {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: 'power2.out',
+    })
+
+    tl.from(title, {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.5,
+    }, '<')
+      .from(chips, {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.3,
+      }, '<')
+      .from(splitDescription.lines, {
+        y: 50,
+        autoAlpha: 0,
+        duration: 1,
+        stagger: 0.3,
+      })
+      .from(buttons, {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.3,
+      }, '-=1');
+
+  });
+
+
+  </script>
+</section>

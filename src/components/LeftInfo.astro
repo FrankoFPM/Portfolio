@@ -3,18 +3,68 @@ import Githubicon from './icons/Githubicon.astro'
 import LinkedinIcon from './icons/LinkedinIcon.astro'
 ---
 
-<div class="fixed left-12 bottom-0">
+<!-- Íconos fijos en escritorio -->
+<div class="hidden lg:block fixed left-12 bottom-0 extras">
   <ul class="flex flex-col gap-4 justify-center items-center
-  after:h-32 after:w-0.5 after:bg-white/80 after:rounded-full after:mt-4">
+    after:h-32 after:w-0.5 after:bg-white/80 after:rounded-full after:mt-4">
     <li>
-      <a href="https://github.com/FrankoFPM" target="_blank" class="flex items-center justify-center w-12 h-12 text-white/80 hover:text-secondary transition hover:-translate-y-1.5 duration-200">
+      <a href="https://github.com/FrankoFPM" target="_blank"
+        class="flex items-center justify-center w-12 h-12 text-white/80 hover:text-secondary transition hover:-translate-y-1.5 duration-200">
         <Githubicon class="size-10" />
       </a>
     </li>
     <li>
-      <a href="https://www.linkedin.com/in/franco-johan-p%C3%A9rez-melgarejo-3565181b1/" target="_blank" class="flex items-center justify-center w-12 h-12 text-white/80 hover:text-secondary transition hover:-translate-y-1.5 duration-200">
+      <a href="https://www.linkedin.com/in/franco-johan-p%C3%A9rez-melgarejo-3565181b1/" target="_blank"
+        class="flex items-center justify-center w-12 h-12 text-white/80 hover:text-secondary transition hover:-translate-y-1.5 duration-200">
         <LinkedinIcon class="size-10" />
       </a>
     </li>
   </ul>
 </div>
+
+<!-- Footer inferior para móviles -->
+<div class="lg:hidden w-full bg-background/70 backdrop-blur-sm z-40 extras">
+  <ul class="flex justify-center gap-8 py-3">
+    <li>
+      <a href="https://github.com/FrankoFPM" target="_blank"
+        class="text-white/80 hover:text-secondary transition hover:-translate-y-1 duration-200">
+        <Githubicon class="size-8" />
+      </a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/in/franco-johan-p%C3%A9rez-melgarejo-3565181b1/" target="_blank"
+        class="text-white/80 hover:text-secondary transition hover:-translate-y-1 duration-200">
+        <LinkedinIcon class="size-8" />
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- Footer visible en todas las resoluciones -->
+<footer class="relative w-full text-center my-10 p-4 text-white/60 text-sm">
+  <p class="extras">&copy; {new Date().getFullYear()} Franco Pérez. Todos los derechos reservados.</p>
+  <p class="extras mt-1 text-white/40 text-xs">
+    Este sitio utiliza recursos de terceros como íconos e ilustraciones con licencia abierta.
+  </p>
+</footer>
+<script>
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+  import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin'
+
+  gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin)
+
+  // Animación de los íconos en el footer
+  const icons = document.querySelectorAll('.extras');
+  icons.forEach(icon => {
+    gsap.from(icon, {
+      duration: 0.5,
+      y: 30,
+      opacity: 0,
+      ease: 'power1.out',
+      scrollTrigger: {
+        trigger: icon,
+      }
+    });
+  });
+</script>

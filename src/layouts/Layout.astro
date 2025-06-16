@@ -7,7 +7,7 @@ const { title } = Astro.props as Props
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -15,7 +15,7 @@ const { title } = Astro.props as Props
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="min-h-fit relative">
     <slot />
     <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', () => {
@@ -40,7 +40,7 @@ const { title } = Astro.props as Props
         }
 
         if (currentScroll > 0) {
-          header.classList.add('shadow-xl/20', 'shadow-black', 'sticky', 'top-0', 'z-10');
+          header.classList.add('shadow-xl/20', 'shadow-black', 'sticky', 'top-0', 'z-50');
         } else {
           header.classList.remove('shadow-xl/20', 'shadow-black');
         }

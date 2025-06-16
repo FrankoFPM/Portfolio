@@ -1,0 +1,56 @@
+---
+export interface personalInfo {
+  name: string
+  title: string
+  subtitle: string
+}
+
+const { data } = Astro.props
+---
+<section class="min-h-[calc(100vh-120px)] flex items-center justify-center relative">
+  <div class="flex flex-col gap-4 relative w-full">
+    <h2 class="text-xl text-secondary home-text overflow-hidden">Hi, mi name is</h2>
+    <h1 class="text-7xl font-bold text-white/90 home-text overflow-hidden">{data.name}</h1>
+    <h2 class="lg:text-6xl text-5xl text font-bold text-white/70 home-text overflow-hidden">{data.title}</h2>
+    <p class="text-lg text-white/70 text-pretty max-w-[30rem] my-4 home-text-desc overflow-hidden">{data.subtitle}</p>
+  </div>
+  <script>
+    import { gsap } from 'gsap'
+    import { ScrollTrigger } from 'gsap/ScrollTrigger'
+    import { SplitText } from 'gsap/SplitText';
+    import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
+
+    const el = document.querySelector('.text-nowrap');
+    if (el) {
+      (el as HTMLElement).style.display = 'inline-block';
+      (el as HTMLElement).style.width = (el as HTMLElement).offsetWidth + 100 + 'px'; // Fija el ancho actual
+    }
+
+    gsap.registerPlugin(ScrollTrigger, SplitText, ScrambleTextPlugin);
+    const split = new SplitText('.home-text', { type: 'chars, words', position: 'relative' });
+    const splitDesc = new SplitText('.home-text-desc', { type: 'lines, words'});
+    gsap.timeline().from(split.chars, {
+      duration: 0.5,
+      y: 150,
+      stagger: 0.1,
+      autoAlpha: 0,
+      scrambleText:{ text: '/', chars: 'lowerCase', speed: 0.5, delimiter:'', tweenLength: false },
+      ease: 'expo',
+      scrollTrigger: {
+        trigger: '.text-secondary',
+        start: 'top 100%',
+      },
+    })
+      .from(splitDesc.lines, {
+        duration: 0.5,
+        y: 150,
+        stagger: 0.1,
+        autoAlpha: 0,
+        ease: 'expo',
+        scrollTrigger: {
+          trigger: '.home-text-desc',
+          start: 'top 100%',
+        },
+      }, '-=0.5');
+  </script>
+</section>
