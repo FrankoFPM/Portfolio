@@ -8,6 +8,7 @@ import ViteIcon from './icons/ViteIcon.astro'
 import LaravelIcon from './icons/LaravelIcon.astro'
 import MysqlIcon from './icons/MysqlIcon.astro'
 import JavaIcon from './icons/JavaIcon.astro'
+import SpringBootIcon from './icons/SpringBootIcon.astro'
 
 const TAGS = {
   REACT: {
@@ -28,23 +29,28 @@ const TAGS = {
   VITE: {
     name: 'Vite',
     class: 'bg-[#646CFF] text-white',
-    icon: ViteIcon, // Placeholder, replace with actual Vite icon
+    icon: ViteIcon,
   },
   LARAVEL: {
     name: 'Laravel',
     class: 'bg-[#FFFF] text-black',
-    icon: LaravelIcon, // Placeholder, replace with actual Laravel icon
+    icon: LaravelIcon,
   },
   MYSQL: {
     name: 'MySQL',
     class: 'bg-[#6cb0bf] text-white',
-    icon: MysqlIcon, // Placeholder, replace with actual MySQL icon
+    icon: MysqlIcon,
   },
   JAVA: {
     name: 'Java',
     class: 'bg-[#D8F8FF] text-black',
     icon: JavaIcon,
   },
+  SPRINGBOOT: {
+    name: 'Spring Boot',
+    class: 'bg-[#506349] text-white',
+    icon: SpringBootIcon,
+  }
 }
 
 const PROJECTS = [
@@ -82,7 +88,23 @@ const PROJECTS = [
     github: 'https://github.com/FrankoFPM/administracionV2',
     tags: [TAGS.LARAVEL, TAGS.MYSQL, TAGS.TAILWIND],
 
-  }
+  },
+  {
+    title: 'La Caserita Minimarket - Frontend',
+    description:
+      'Aplicación web para gestionar un minimarket, con registro de productos, ventas y reportes, utilizando react router v7 y tailwind.',
+    image: 'img/projects/market.png',
+    github: 'https://github.com/FrankoFPM/minimarket-frontend',
+    tags: [TAGS.REACT, TAGS.TAILWIND, TAGS.VITE]
+  },
+  {
+    title: 'La Caserita Minimarket - Backend',
+    description:
+      'API RESTful para gestionar un minimarket, con autenticación JWT, manejo de productos y ventas, utilizando Spring Boot y Oracle.',
+    image: 'img/projects/market2.png',
+    github: 'https://github.com/FrankoFPM/minimarket-backend-spring',
+    tags: [TAGS.JAVA , TAGS.SPRINGBOOT]
+  },
 ]
 ---
 <section id="projects" class={`my-5 ${PROJECTS.length === 0 ? 'flex items-center justify-center' : ''}`}>
