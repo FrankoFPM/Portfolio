@@ -1,0 +1,6 @@
+[
+  { "group": "backend", "items": ["NESTJS", "SPRINGBOOT", "LARAVEL", "NODEJS", "TRPC"] },
+  { "group": "frontend", "items": ["NEXTJS", "REACT", "ASTRO", "TAILWIND"] },
+  { "group": "cloud", "items": ["AWS", "GCP", "DOCKER", "CICD", "LINUX"] },
+  { "group": "data", "items": ["POSTGRESQL", "MYSQL", "MONGODB", "FIREBASE", "PRISMA", "AI_APIS"] }
+]

@@ -1,0 +1,60 @@
+---
+import MailIcon from './icons/MailIcon.astro'
+import LinkedinIcon from './icons/LinkedinIcon.astro'
+import LinkButton from './LinkButton.astro'
+import { useTranslations, type Lang } from '../i18n/ui'
+
+const { lang } = Astro.props as { lang: Lang }
+const t = useTranslations(lang)
+
+const EMAIL = 'frank.13.gp@gmail.com'
+const LINKEDIN_URL = 'https://www.linkedin.com/in/franco-johan-p%C3%A9rez-melgarejo-3565181b1/'
+---
+
+<section id="contact" class="my-5 py-4">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h2 id="contact-heading" class="text-3xl font-bold text-white/90 flex items-center my-10">
+      <span class="text-secondary mr-2">05.</span> {t('section.contact')}
+      <span class="flex-1 h-px bg-white/20 ml-4"></span>
+    </h2>
+    <p class="contact-text text-lg text-white/70 leading-relaxed max-w-xl mx-auto">
+      {t('contact.text')}
+    </p>
+    <div class="contact-buttons flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+      <LinkButton href={`mailto:${EMAIL}`} ariaLabel={t('contact.email')}>
+        <MailIcon class="size-5" />
+        {EMAIL}
+      </LinkButton>
+      <LinkButton href={LINKEDIN_URL} ariaLabel="LinkedIn">
+        <LinkedinIcon class="size-5" />
+        LinkedIn
+      </LinkButton>
+    </div>
+  </div>
+</section>
+<script>
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+  gsap.registerPlugin(ScrollTrigger)
+
+  gsap.from('#contact-heading', {
+    scrollTrigger: {
+      trigger: '#contact-heading',
+      start: 'top 100%',
+    },
+    opacity: 0,
+    y: 50,
+    duration: 0.7,
+  })
+
+  gsap.from(['#contact .contact-text', '#contact .contact-buttons'], {
+    scrollTrigger: {
+      trigger: '#contact',
+      start: 'top 90%',
+    },
+    y: 30,
+    opacity: 0,
+    duration: 0.7,
+    stagger: 0.2,
+  })
+</script>

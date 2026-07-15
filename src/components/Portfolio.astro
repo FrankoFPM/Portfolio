@@ -6,7 +6,9 @@ import experience from '../data/experience.json'
 import personalInfo from '../data/personal-info.json'
 import Experience from './Experience.astro'
 import Projects from './Projects.astro'
+import Skills from './Skills.astro'
 import About from './About.astro'
+import Contact from './Contact.astro'
 import Home from './Home.astro'
 import { useTranslations, type Lang } from '../i18n/ui'
 
@@ -23,7 +25,9 @@ const t = useTranslations(lang)
     <Home data={personalInfo.personalInfo} lang={lang} />
     <Experience experience={experience} lang={lang} />
     <Projects lang={lang} />
+    <Skills lang={lang} />
     <About data={personalInfo.aboutMe} lang={lang} />
+    <Contact lang={lang} />
   </main>
   <LeftInfo lang={lang} />
 </Layout>

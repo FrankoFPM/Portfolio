@@ -1,0 +1,116 @@
+---
+import ReactIcon from './icons/ReactIcon.astro'
+import TailwindIcon from './icons/TailwindIcon.astro'
+import LaravelIcon from './icons/LaravelIcon.astro'
+import MysqlIcon from './icons/MysqlIcon.astro'
+import SpringBootIcon from './icons/SpringBootIcon.astro'
+import NextjsIcon from './icons/NextjsIcon.astro'
+import NestjsIcon from './icons/NestjsIcon.astro'
+import PostgresqlIcon from './icons/PostgresqlIcon.astro'
+import DockerIcon from './icons/DockerIcon.astro'
+import PrismaIcon from './icons/PrismaIcon.astro'
+import AwsIcon from './icons/AwsIcon.astro'
+import GcpIcon from './icons/GcpIcon.astro'
+import FirebaseIcon from './icons/FirebaseIcon.astro'
+import TrpcIcon from './icons/TrpcIcon.astro'
+import NodejsIcon from './icons/NodejsIcon.astro'
+import AstroIcon from './icons/AstroIcon.astro'
+import MongodbIcon from './icons/MongodbIcon.astro'
+import LinuxIcon from './icons/LinuxIcon.astro'
+import skills from '../data/skills.json'
+import { useTranslations, type Lang, type UiKey } from '../i18n/ui'
+
+const { lang } = Astro.props as { lang: Lang }
+const t = useTranslations(lang)
+
+const TAGS = {
+  NESTJS: { name: 'NestJS', class: 'bg-[#E0234E] text-white', icon: NestjsIcon },
+  SPRINGBOOT: { name: 'Spring Boot', class: 'bg-[#506349] text-white', icon: SpringBootIcon },
+  LARAVEL: { name: 'Laravel', class: 'bg-[#FFFF] text-black', icon: LaravelIcon },
+  NODEJS: { name: 'Node.js', class: 'bg-[#3C873A] text-white', icon: NodejsIcon },
+  TRPC: { name: 'tRPC', class: 'bg-[#398CCB] text-white', icon: TrpcIcon },
+  NEXTJS: { name: 'Next.js', class: 'bg-black text-white', icon: NextjsIcon },
+  REACT: { name: 'React', class: 'bg-black text-white', icon: ReactIcon },
+  ASTRO: { name: 'Astro', class: 'bg-[#1a1a2e] text-white', icon: AstroIcon },
+  TAILWIND: { name: 'Tailwind CSS', class: 'bg-[#003159] text-white', icon: TailwindIcon },
+  AWS: { name: 'AWS', class: 'bg-[#FF9900] text-black', icon: AwsIcon },
+  GCP: { name: 'Google Cloud', class: 'bg-[#4285F4] text-white', icon: GcpIcon },
+  DOCKER: { name: 'Docker', class: 'bg-[#2496ED] text-white', icon: DockerIcon },
+  CICD: { name: 'CI/CD', class: 'bg-white/5 border border-white/20 text-white/70', icon: null },
+  LINUX: { name: 'Linux', class: 'bg-[#1a1a2e] text-white', icon: LinuxIcon },
+  POSTGRESQL: { name: 'PostgreSQL', class: 'bg-[#336791] text-white', icon: PostgresqlIcon },
+  MYSQL: { name: 'MySQL', class: 'bg-[#6cb0bf] text-white', icon: MysqlIcon },
+  MONGODB: { name: 'MongoDB', class: 'bg-[#13AA52] text-white', icon: MongodbIcon },
+  FIREBASE: { name: 'Firebase', class: 'bg-[#FFCA28] text-black', icon: FirebaseIcon },
+  PRISMA: { name: 'Prisma', class: 'bg-[#2D3748] text-white', icon: PrismaIcon },
+  AI_APIS: { name: 'OpenAI & Gemini APIs', class: 'bg-white/5 border border-white/20 text-white/70', icon: null },
+} as const
+
+type TagKey = keyof typeof TAGS
+
+interface SkillGroup {
+  group: string
+  items: string[]
+}
+---
+<section id="stack" class="my-5">
+  <h2 id="stack-heading" class="text-3xl font-bold text-white/90 flex items-center my-10">
+    <span class="text-secondary mr-2">03.</span> {t('section.stack')}
+    <span class="flex-1 h-px bg-white/20 ml-4"></span>
+  </h2>
+  <div class="flex flex-col gap-y-8">
+    {
+      (skills as SkillGroup[]).map(({ group, items }) => (
+        <div class="stack-group">
+          <h3 class="text-sm font-semibold uppercase tracking-wide text-white/50 mb-3">
+            {t(`skills.${group}` as UiKey)}
+          </h3>
+          <ul class="flex flex-row flex-wrap gap-2">
+            {items.map((key) => {
+              const tag = TAGS[key as TagKey]
+              if (!tag) return null
+              return (
+                <li class="chips">
+                  <span class={`flex items-center gap-x-2 rounded-full text-xs ${tag.class} py-1 px-3 transition duration-200 hover:scale-105 hover:brightness-110`}>
+                    {tag.icon && <tag.icon class="size-4" />}
+                    {tag.name}
+                  </span>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+  <script>
+    import { gsap } from 'gsap'
+    import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+    gsap.registerPlugin(ScrollTrigger)
+
+    gsap.from('#stack-heading', {
+      scrollTrigger: {
+        trigger: '#stack-heading',
+        start: 'top 100%',
+      },
+      opacity: 0,
+      y: 50,
+      duration: 0.7,
+    })
+
+    document.querySelectorAll('#stack .stack-group').forEach((group) => {
+      gsap.from(group.querySelectorAll('.chips'), {
+        scrollTrigger: {
+          trigger: group,
+          start: 'top 90%',
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.05,
+        ease: 'power2.out',
+      })
+    })
+  </script>
+</section>

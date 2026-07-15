@@ -28,7 +28,7 @@
     "link": "", "github": "", "image": "img/projects/nitro-oil.webp",
     "tags": ["NEXTJS", "DOCKER", "POSTGRESQL"] },
   { "id": "facturador-pro8", "title": "Facturador Pro8", "org": "Freelance",
-    "description": { "es": "Sistema Laravel multi-tenant de facturación electrónica SUNAT con 49+ empresas en producción.", "en": "Multi-tenant Laravel e-invoicing system (SUNAT) with 49+ companies in production." },
+    "description": { "es": "Soporte y mejoras de un sistema Laravel multi-tenant de facturación electrónica SUNAT con 49+ empresas en producción.", "en": "Support and feature development for a multi-tenant Laravel e-invoicing system (SUNAT) with 49+ companies in production." },
     "link": "", "github": "", "image": "img/projects/facturador.webp",
     "tags": ["LARAVEL", "MYSQL", "DOCKER"] }
 ]
