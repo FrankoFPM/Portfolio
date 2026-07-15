@@ -54,6 +54,7 @@ interface Project {
   title: string
   org: string
   description: { es: string; en: string }
+  contribution?: { es: string; en: string }
   link: string
   github: string
   image: string
@@ -81,6 +82,7 @@ const rest = allProjects.filter((p) => p.id !== FEATURED_ID)
     <span class="text-secondary mr-2">02.</span> {t('section.projects')}
     <span class="flex-1 h-px bg-white/20 ml-4"></span>
   </h2>
+  <p class="-mt-6 mb-10 text-sm text-white/50">{t('section.projectsIntro')}</p>
   {
     featured && (
       <article class="mb-16 group box-container">
@@ -133,6 +135,11 @@ const rest = allProjects.filter((p) => p.id !== FEATURED_ID)
               })}
             </ul>
             <p class="mt-4 text-white/70 leading-relaxed description">{featured.description[lang]}</p>
+            {featured.contribution && (
+              <p class="mt-2 text-sm text-white/50">
+                <span class="font-semibold text-secondary">{t('project.contribution')}:</span> {featured.contribution[lang]}
+              </p>
+            )}
             <footer class="mt-6 flex items-end justify-start gap-x-4">
               {featured.github && (
                 <LinkButton href={featured.github} extraClasses="buttons" ariaLabel={`${t('project.code')}: ${featured.title}`}>
@@ -153,7 +160,7 @@ const rest = allProjects.filter((p) => p.id !== FEATURED_ID)
   }
   <div class="flex flex-col gap-y-16">
     {
-      rest.map(({ image, title, org, description, tags, link, github }) => (
+      rest.map(({ image, title, org, description, contribution, tags, link, github }) => (
         <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0 box-container">
           <div class="w-full md:w-1/2">
             <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl border border-white/10 md:group-hover:border-secondary/30">
@@ -205,6 +212,11 @@ const rest = allProjects.filter((p) => p.id !== FEATURED_ID)
                 })}
               </ul>
               <div class="mt-2 text-white/70 leading-relaxed description">{description[lang]}</div>
+              {contribution && (
+                <p class="mt-2 text-sm text-white/50">
+                  <span class="font-semibold text-secondary">{t('project.contribution')}:</span> {contribution[lang]}
+                </p>
+              )}
               <footer class="flex items-end justify-start mt-4 gap-x-4">
                 {github && (
                   <LinkButton href={github} extraClasses="buttons" ariaLabel={`${t('project.code')}: ${title}`}>
