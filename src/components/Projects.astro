@@ -68,6 +68,12 @@ const ORG_BADGE: Record<string, string> = {
   Personal: 'bg-white/5 border-white/20 text-white/70',
   Freelance: 'bg-transparent border-dashed border-secondary/40 text-secondary/80',
 }
+
+// ponytail: featured project marcado por id, no requiere tocar el schema del JSON
+const FEATURED_ID = 'arrendo'
+const allProjects = projects as Project[]
+const featured = allProjects.find((p) => p.id === FEATURED_ID)
+const rest = allProjects.filter((p) => p.id !== FEATURED_ID)
 ---
 <section id="projects" class="my-5">
   <div>
@@ -75,9 +81,79 @@ const ORG_BADGE: Record<string, string> = {
     <span class="text-secondary mr-2">02.</span> {t('section.projects')}
     <span class="flex-1 h-px bg-white/20 ml-4"></span>
   </h2>
+  {
+    featured && (
+      <article class="mb-16 group box-container">
+        <div class="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-secondary">
+          <span class="h-px w-6 bg-secondary"></span>
+          {t('project.featured')}
+        </div>
+        <div class="flex flex-col overflow-hidden rounded-xl border border-secondary/30 bg-white/5 shadow-2xl md:flex-row">
+          <div class="md:w-[55%]">
+            {hasImage(featured.image) ? (
+              <img
+                alt={`Captura de pantalla del proyecto ${featured.title}`}
+                class="h-64 w-full object-cover object-top transition duration-500 md:h-full md:group-hover:scale-105"
+                src={`/${featured.image}`}
+              />
+            ) : (
+              <div
+                class="relative h-64 w-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-[#161a33] to-background md:h-full"
+                role="img"
+                aria-label={`${featured.title} — sin captura de pantalla disponible`}
+              >
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(148,207,251,0.15),transparent_60%)]"></div>
+                <div class="flex items-center gap-6 opacity-[0.15]">
+                  {featured.tags.slice(0, 3).map((key) => {
+                    const tag = TAGS[key as TagKey]
+                    if (!tag) return null
+                    return <tag.icon class="size-16 text-white" />
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+          <div class="flex flex-col justify-center p-6 md:w-[45%] md:p-8">
+            <div class="flex items-center gap-3">
+              <h3 class="text-2xl font-bold text-white/90 title">{featured.title}</h3>
+              <span class={`text-xs font-medium px-2 py-0.5 rounded-full border whitespace-nowrap ${ORG_BADGE[featured.org] ?? ORG_BADGE.Personal}`}>{featured.org}</span>
+            </div>
+            <ul class="mt-3 flex flex-row flex-wrap gap-2">
+              {featured.tags.map((key) => {
+                const tag = TAGS[key as TagKey]
+                if (!tag) return null
+                return (
+                  <li class="chips">
+                    <span class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 transition duration-200 hover:scale-105 hover:brightness-110`}>
+                      <tag.icon class="size-4" />
+                      {tag.name}
+                    </span>
+                  </li>
+                )
+              })}
+            </ul>
+            <p class="mt-4 text-white/70 leading-relaxed description">{featured.description[lang]}</p>
+            <footer class="mt-6 flex items-end justify-start gap-x-4">
+              {featured.github && (
+                <LinkButton href={featured.github} extraClasses="buttons" ariaLabel={`${t('project.code')}: ${featured.title}`}>
+                  <Githubicon class="size-6" />
+                  {t('project.code')}
+                </LinkButton>
+              )}
+              {featured.link && (
+                <LinkButton href={featured.link} extraClasses="buttons" ariaLabel={`${t('project.view')}: ${featured.title}`}>
+                  {t('project.view')}
+                </LinkButton>
+              )}
+            </footer>
+          </div>
+        </div>
+      </article>
+    )
+  }
   <div class="flex flex-col gap-y-16">
     {
-      (projects as Project[]).map(({ image, title, org, description, tags, link, github }) => (
+      rest.map(({ image, title, org, description, tags, link, github }) => (
         <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0 box-container">
           <div class="w-full md:w-1/2">
             <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl border border-white/10 md:group-hover:border-secondary/30">
