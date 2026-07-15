@@ -1,9 +1,16 @@
 ---
 import { useTranslations, type Lang } from '../i18n/ui'
+import education from '../data/education.json'
 
 interface LocalizedText {
   es: string
   en: string
+}
+interface EducationItem {
+  institution: string
+  degree: LocalizedText
+  period: LocalizedText
+  note: LocalizedText
 }
 const { data, lang } = Astro.props as { data: LocalizedText[]; lang: Lang }
 const t = useTranslations(lang)
@@ -21,6 +28,20 @@ const t = useTranslations(lang)
           {paragraph[lang]}
         </p>
       ))}
+    </div>
+    <div class="mt-10">
+      <h3 class="text-sm font-semibold uppercase tracking-wide text-white/50 mb-3">
+        {t('about.education')}
+      </h3>
+      <ul class="flex flex-col gap-y-3">
+        {(education as EducationItem[]).map((item) => (
+          <li class="text-sm text-white/70 leading-relaxed">
+            <span class="text-white/90">{item.degree[lang]}</span> — {item.institution}
+            <span class="text-white/50">, {item.period[lang]}</span>
+            {item.note[lang] && <span class="text-white/50"> · {item.note[lang]}</span>}
+          </li>
+        ))}
+      </ul>
     </div>
   </div>
 </section>

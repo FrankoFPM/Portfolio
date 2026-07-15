@@ -1,0 +1,14 @@
+[
+  {
+    "institution": "Universidad Tecnológica del Perú (UTP)",
+    "degree": { "es": "Ingeniería de Sistemas e Informática", "en": "Systems and Computer Engineering" },
+    "period": { "es": "2023 — Actualidad", "en": "2023 — Present" },
+    "note": { "es": "En curso, 9.° ciclo", "en": "In progress, 9th semester" }
+  },
+  {
+    "institution": "IESTP Manuel Arévalo Cáceres",
+    "degree": { "es": "Técnico Profesional en Computación e Informática", "en": "Professional Technician in Computing and Informatics" },
+    "period": { "es": "2023", "en": "2023" },
+    "note": { "es": "Titulado — Primer puesto académico, Beca de Honor", "en": "Graduated — First in class, Honor Scholarship" }
+  }
+]
