@@ -1,22 +1,4 @@
 ---
-import Header from '../components/Header.astro'
-import LeftInfo from '../components/LeftInfo.astro'
-import Layout from '../layouts/Layout.astro'
-import experience from '../data/experience.json'
-import personalInfo from '../data/personal-info.json'
-import Experience from '../components/Experience.astro'
-import Projects from '../components/Projects.astro'
-import About from '../components/About.astro'
-import Home from '../components/Home.astro'
+import Portfolio from '../components/Portfolio.astro'
 ---
-
-<Layout title="Porfolio de Franco">
-  <Header />
-  <main class="max-w-[1000px] mx-auto px-5 lg:px-10 flex flex-col gap-10">
-    <Home data={personalInfo.personalInfo} />
-    <Experience experience={experience} />
-    <Projects />
-    <About data={personalInfo.aboutMe} />
-  </main>
-  <LeftInfo />
-</Layout>
+<Portfolio lang="es" />

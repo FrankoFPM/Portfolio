@@ -1,0 +1,29 @@
+---
+import Header from './Header.astro'
+import LeftInfo from './LeftInfo.astro'
+import Layout from '../layouts/Layout.astro'
+import experience from '../data/experience.json'
+import personalInfo from '../data/personal-info.json'
+import Experience from './Experience.astro'
+import Projects from './Projects.astro'
+import About from './About.astro'
+import Home from './Home.astro'
+import { useTranslations, type Lang } from '../i18n/ui'
+
+interface Props {
+  lang: Lang
+}
+const { lang } = Astro.props
+const t = useTranslations(lang)
+---
+
+<Layout lang={lang} title={t('site.title')} description={personalInfo.personalInfo.subtitle[lang]}>
+  <Header lang={lang} />
+  <main class="max-w-[1000px] mx-auto px-5 lg:px-10 flex flex-col gap-10">
+    <Home data={personalInfo.personalInfo} lang={lang} />
+    <Experience experience={experience} lang={lang} />
+    <Projects lang={lang} />
+    <About data={personalInfo.aboutMe} lang={lang} />
+  </main>
+  <LeftInfo lang={lang} />
+</Layout>

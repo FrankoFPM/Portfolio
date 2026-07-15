@@ -1,5 +1,13 @@
 ---
 import Logo from './icons/Logo.astro'
+import { useTranslations, type Lang } from '../i18n/ui'
+
+interface Props {
+  lang: Lang
+}
+const { lang } = Astro.props
+const t = useTranslations(lang)
+const esActive = lang === 'es'
 ---
 
 <header id="main-header" class="h-[80px] px-6 lg:px-16 flex justify-between items-center text-white/80 transition-all duration-300 backdrop-blur-sm bg-background/50 relative z-50">
@@ -9,7 +17,7 @@ import Logo from './icons/Logo.astro'
   </div>
 
   <!-- Botón hamburguesa -->
-  <button id="menu-toggle" class="lg:hidden flex flex-col justify-center gap-1 z-50" aria-label="Toggle menu">
+  <button id="menu-toggle" class="lg:hidden flex flex-col justify-center gap-1 z-50" aria-label={t('nav.toggleMenu')}>
     <span class="w-6 h-0.5 bg-white rounded item-header"></span>
     <span class="w-6 h-0.5 bg-white rounded item-header"></span>
     <span class="w-6 h-0.5 bg-white rounded item-header"></span>
@@ -19,16 +27,22 @@ import Logo from './icons/Logo.astro'
   <nav id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-background/90 flex flex-col items-center justify-center lg:justify-end gap-8 text-lg font-semibold
     lg:static lg:flex lg:h-auto lg:flex-row lg:bg-transparent lg:gap-10 transition-transform duration-300 -translate-x-full lg:translate-x-0">
     <ul class="flex flex-col lg:flex-row items-center gap-8">
-      <li><a href="#experience" class="hover:text-secondary flex gap-1 item-header"><span class="text-secondary">1.</span>Experience</a></li>
-      <li><a href="#projects" class="hover:text-secondary flex gap-1 item-header"><span class="text-secondary">2.</span>Projects</a></li>
-      <li><a href="#about" class="hover:text-secondary flex gap-1 item-header"><span class="text-secondary">3.</span>About</a></li>
+      <li><a href="#experience" class="hover:text-secondary flex gap-1 item-header outline-none focus-visible:ring-2 focus-visible:ring-secondary rounded-sm"><span class="text-secondary">1.</span>{t('nav.experience')}</a></li>
+      <li><a href="#projects" class="hover:text-secondary flex gap-1 item-header outline-none focus-visible:ring-2 focus-visible:ring-secondary rounded-sm"><span class="text-secondary">2.</span>{t('nav.projects')}</a></li>
+      <li><a href="#about" class="hover:text-secondary flex gap-1 item-header outline-none focus-visible:ring-2 focus-visible:ring-secondary rounded-sm"><span class="text-secondary">3.</span>{t('nav.about')}</a></li>
     </ul>
-    <a href={`${import.meta.env.BASE_URL}/docs/CV_2025.pdf`} target="_blank" rel="noopener" class="relative inline-block item-header">
+    <!-- Toggle de idioma -->
+    <div class="flex items-center gap-2 text-sm font-semibold item-header">
+      <a href="/" class={esActive ? 'text-secondary' : 'text-white/50 hover:text-secondary'} aria-current={esActive ? 'true' : undefined}>ES</a>
+      <span class="text-white/30">/</span>
+      <a href="/en/" class={!esActive ? 'text-secondary' : 'text-white/50 hover:text-secondary'} aria-current={!esActive ? 'true' : undefined}>EN</a>
+    </div>
+    <a href="/docs/CV_2025.pdf" target="_blank" rel="noopener" class="relative inline-block item-header">
       <div class="absolute w-full h-full bg-secondary rounded-md z-0"></div>
       <div
         class="relative z-10 inline-block px-6 py-2 font-semibold text-secondary border-2 border-secondary bg-background rounded-md
         transition-transform duration-200 hover:-translate-1">
-        Resumen
+        {t('nav.resume')}
       </div>
     </a>
   </nav>

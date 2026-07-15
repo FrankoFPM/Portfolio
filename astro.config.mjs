@@ -2,14 +2,25 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://FrankoFPM.github.io',
-  base: 'Portfolio',
+  site: 'https://francopm.dev',
+
+  i18n: {
+    defaultLocale: 'es',
+    locales: ['es', 'en'],
+    routing: { prefixDefaultLocale: false },
+  },
+
   vite: {
     plugins: [tailwindcss()],
   },
+
   server: {
     host: true,
   },
+
+  integrations: [sitemap()],
 });

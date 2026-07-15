@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://francopm.dev/sitemap-index.xml

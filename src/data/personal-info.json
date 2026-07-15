@@ -1,11 +1,18 @@
 {
   "personalInfo": {
-    "name": "Franco Perez",
-    "title": "I'm a Full Stack Developer",
-    "subtitle": "I am a passionate Full Stack Developer with a strong focus on creating dynamic and responsive web applications. I have experience in both front-end and back-end development, and I am always eager to learn new technologies and improve my skills."
+    "name": "Franco Pérez",
+    "title": { "es": "Full Stack Developer & Tech Lead", "en": "Full Stack Developer & Tech Lead" },
+    "subtitle": {
+      "es": "Diseño, construyo y despliego software en producción: fintech, SaaS y microservicios con NestJS, Next.js, Spring Boot y cloud (AWS/GCP).",
+      "en": "I design, build and ship production software: fintech, SaaS and microservices with NestJS, Next.js, Spring Boot and AWS/GCP."
+    }
   },
   "aboutMe": [
-    "¡Hola! Soy Franco, y mi curiosidad por la tecnología comenzó desde joven. Un día, mientras exploraba páginas web y juegos online, noté que podía modificar algunas cosas desde el modo desarrollador del navegador. Jugando con valores, inputs y estilos, descubrí cómo cambiar lo que se veía en pantalla —y aunque todo era solo visual, me intrigó tanto que quise entender cómo funcionaba realmente.",
-    "Ahí empezó todo. Desde entonces he seguido aprendiendo por mi cuenta, hasta convertir esa curiosidad en una formación técnica en informática, que ahora complemento con la carrera de Ingeniería de Sistemas e Informática. Me gusta crear soluciones web, automatizar procesos y resolver problemas con enfoque técnico y creativo."
+    { "es": "Soy desarrollador full-stack y lidero el equipo técnico de BCP Consulting, donde llevamos proyectos desde cero hasta producción: fintech, EdTech, ERPs y puntos de venta.",
+      "en": "I'm a full-stack developer leading the tech team at BCP Consulting, where we take projects from zero to production: fintech, EdTech, ERPs and point-of-sale systems." },
+    { "es": "Mi día a día mezcla backend (NestJS, Spring Boot), frontend (Next.js, React) e infraestructura: Docker, CI/CD y despliegues en AWS y GCP. También integro IA (OpenAI, Gemini) en productos reales: verificación de identidad y evaluación automatizada.",
+      "en": "My day-to-day mixes backend (NestJS, Spring Boot), frontend (Next.js, React) and infrastructure: Docker, CI/CD and deployments on AWS and GCP. I also integrate AI (OpenAI, Gemini) into real products: identity verification and automated grading." },
+    { "es": "Fuera del trabajo construyo mis propios SaaS (arrendo.pe), corro LLMs locales en mi propia GPU, armo drones FPV y hago modelismo naval.",
+      "en": "Outside work I build my own SaaS products (arrendo.pe), run local LLMs on my own GPU, build FPV drones and do naval modeling." }
   ]
 }

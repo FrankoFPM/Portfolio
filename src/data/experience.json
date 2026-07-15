@@ -1,22 +1,30 @@
 [
   {
-    "company": "CEICE-CV",
-    "role": "Desarrollador Web Full-Stack (Prácticas)",
-    "period": "Ene - May 2023",
+    "company": "BCP Consulting",
+    "role": { "es": "Full Stack Developer / Tech Lead", "en": "Full Stack Developer / Tech Lead" },
+    "period": { "es": "Oct 2025 — Actualidad", "en": "Oct 2025 — Present" },
     "description": [
-      "Desarrollo de una landing page de cursos con PHP y Laravel, integrando una base de datos relacional.",
-      "Mantenimiento y optimización de la base de datos existente mediante técnicas de normalización.",
-      "Reactivación de redes sociales y diseño de contenido multimedia para campañas publicitarias."
+      { "es": "Liderazgo técnico de proyectos desde cero hasta producción: arquitectura, desarrollo e infraestructura.", "en": "Technical lead on projects from zero to production: architecture, development and infrastructure." },
+      { "es": "Cloud y DevOps: entornos en GCP y AWS Lightsail, contenedores Docker, redes internas, monitoreo y despliegues productivos.", "en": "Cloud & DevOps: GCP and AWS Lightsail environments, Docker containers, internal networking, monitoring and production deployments." },
+      { "es": "Integración de IA (OpenAI, Gemini) en fintech y EdTech: verificación de identidad, análisis de documentos y evaluación automatizada de exámenes.", "en": "AI integration (OpenAI, Gemini) in fintech and EdTech: identity verification, document analysis and automated exam grading." },
+      { "es": "Microservicios con Spring Boot y NestJS; frontends con Next.js y React; PostgreSQL, Prisma y tRPC.", "en": "Microservices with Spring Boot and NestJS; frontends with Next.js and React; PostgreSQL, Prisma and tRPC." }
+    ]
+  },
+  {
+    "company": "CEICE-CV",
+    "role": { "es": "Desarrollador Web Full-Stack (Prácticas)", "en": "Full-Stack Web Developer (Internship)" },
+    "period": { "es": "Ene — May 2023", "en": "Jan — May 2023" },
+    "description": [
+      { "es": "Desarrollo de plataformas educativas con PHP y Laravel.", "en": "Built educational platforms with PHP and Laravel." },
+      { "es": "Normalización de bases de datos relacionales y optimización de consultas SQL.", "en": "Normalized relational databases and optimized SQL queries." }
     ]
   },
   {
     "company": "IESTP Manuel Arévalo Cáceres",
-    "role": "Soporte Técnico (Prácticas)",
-    "period": "Sep - Dic 2022",
+    "role": { "es": "Soporte y Mantenimiento de Sistemas (Prácticas)", "en": "IT Support & Systems Maintenance (Internship)" },
+    "period": { "es": "Sep — Dic 2022", "en": "Sep — Dec 2022" },
     "description": [
-      "Reestructuración de cableado de redes de la institución.",
-      "Soporte al personal de la institución.",
-      "Reparación y mantenimiento de equipos informáticos."
+      { "es": "Reestructuración de infraestructura de redes y mantenimiento preventivo de equipos.", "en": "Restructured network infrastructure and performed preventive hardware maintenance." }
     ]
   }
 ]

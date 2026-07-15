@@ -1,18 +1,25 @@
 ---
+import { useTranslations, type Lang } from '../i18n/ui'
+
+interface LocalizedText {
+  es: string
+  en: string
+}
 export interface ExperienceItem {
-  role: string
+  role: LocalizedText
   company: string
-  period: string
-  description: string[]
+  period: LocalizedText
+  description: LocalizedText[]
 }
 
-const { experience } = Astro.props
+const { experience, lang } = Astro.props as { experience: ExperienceItem[]; lang: Lang }
+const t = useTranslations(lang)
 ---
 
 <section id="experience" class="min-h-[calc(50vh-120px)] my-5">
   <div>
     <h2 id="xp" class="text-3xl font-bold text-white/90 flex items-center my-10">
-      <span class="text-secondary mr-2">01.</span> Experience
+      <span class="text-secondary mr-2">01.</span> {t('section.experience')}
       <span class="flex-1 h-px bg-white/20 ml-4"></span>
     </h2>
     <div>
@@ -34,15 +41,15 @@ const { experience } = Astro.props
           {/* Contenido */}
           <div class="ml-10 grid grid-cols-1 md:grid-cols-5 gap-4 w-full">
             <div class="mt-4 flex flex-col gap-2 col-span-2">
-              <h2 class="text-secondary font-semibold role">{exp.role}</h2>
+              <h2 class="text-secondary font-semibold role">{exp.role[lang]}</h2>
               <h3 class="text-white/90 font-semibold company">{exp.company}</h3>
-              <p class="text-white/80 text-pretty capitalize text-sm period">{exp.period}</p>
+              <p class="text-white/80 text-pretty capitalize text-sm period">{exp.period[lang]}</p>
             </div>
             <div class="col-span-3">
               <ul class="pl-2 mt-2">
-                {exp.description.map((desc: string) => (
-                  <li class="description flex before:content-['▹'] before:text-secondary before:text-2xl before:mr-4 text-base text-white/70 text-pretty mt-4">
-                    {desc}
+                {exp.description.map((desc: LocalizedText) => (
+                  <li class="description flex before:content-['▹'] before:text-secondary before:text-2xl before:mr-4 text-base text-white/70 text-pretty leading-relaxed mt-4">
+                    {desc[lang]}
                   </li>
                 ))}
               </ul>
